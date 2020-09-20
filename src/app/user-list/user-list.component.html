@@ -1,35 +1,6 @@
 <h2>Usuários Registrados</h2>
 
 <div class="container-users">
-  <div *ngFor="let user of users" class="card text-white bg-primary mb-3">
-    <div class="card-header">
-      {{ user.name }} - {{ user.gender }}
-    </div>
-    <div class="card-body">
-      <p>
-        <span>Altura (em metros): </span> {{ user.height }}
-      </p>
-      <p>
-        <span>Massa (em quilos): </span> {{ user.weight }}
-      </p>
-    </div>
-  </div>
-    <!-- {{ user | json }} -->
+  <app-user-detail *ngFor="let user of users" [user]="user"></app-user-detail>
 </div>
 
-<!-- <div *ngIf="users.length > 0" class="container">
-  <div class="card text-white bg-primary mb-3">
-    <div class="card-header">
-      {{ users[0].name }} - {{ users[0].gender }}
-    </div>
-    <div class="card-body">
-      <p>
-        <span>Altura (em metros): </span> {{ users[0].height }}
-      </p>
-      <p>
-        <span>Massa (em quilos): </span> {{ users[0].weight }}
-      </p>
-    </div>
-  </div>
-    {{ users[0] | json }}
-</div> -->

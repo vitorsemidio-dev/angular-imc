@@ -7,24 +7,3 @@ h2 {
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 16px;
 }
-
-.card {
-  max-width: 15rem;
-  background: #eee;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid black;
-
-  .card-header {
-    background: #bbb;
-    padding: 8px;
-    border-bottom: 1px solid #555;
-  }
-
-  .card-body {
-    padding: 8px;
-    p + p {
-      margin-top: 8px;
-    }
-  }
-}
