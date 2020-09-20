@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
+import { User } from '../user-list/user';
+import { UserService } from '../user-list/user.service';
+
 @Component({
   selector: 'app-create-user',
   templateUrl: './create-user.component.html',
@@ -15,7 +18,9 @@ export class CreateUserComponent implements OnInit {
     gender: new FormControl(''),
   });
 
-  constructor() { }
+  constructor(
+    private userService: UserService,
+  ) { }
 
   ngOnInit(): void {
   }
@@ -24,9 +29,14 @@ export class CreateUserComponent implements OnInit {
     this.profileForm.reset();
   }
 
-  registerUser() {
-    console.table(this.profileForm.value);
-    setTimeout(this.clearForm, 3000);
+  async registerUser() {
+    const newUserData = this.profileForm.value as User;
+    try {
+      const user = await this.userService.addUser({...newUserData});
+      this.clearForm();
+    } catch (err) {
+      console.log('Falha ao registrar');
+    }
   }
 
 }

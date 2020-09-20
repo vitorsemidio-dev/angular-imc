@@ -6,7 +6,7 @@ import { User } from './user';
   providedIn: 'root'
 })
 export class UserService {
-  private users: User[] = USER_MOCK;
+  private users: User[] = Object.assign([], USER_MOCK);
 
   constructor() { }
 
@@ -14,8 +14,9 @@ export class UserService {
     return Promise.resolve(this.users);
   }
 
-  addUser({ name, height, weight, gender}: User) {
+  addUser({ name, height, weight, gender }: User) {
     const user: User = Object.assign({}, { name, height, weight, gender });
+    this.users.push(user);
     return Promise.resolve(user);
   }
 }
