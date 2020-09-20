@@ -58,6 +58,7 @@ export class ImcHighlightDirective implements OnInit {
       return this.levels[5];
     }
   }
+
   private getStatusColor(imc: number) {
     if (imc < 18.5) {
       return this.color[0];

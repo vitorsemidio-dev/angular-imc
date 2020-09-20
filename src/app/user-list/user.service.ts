@@ -2,11 +2,25 @@ import { Injectable } from '@angular/core';
 
 import { User } from './user';
 
+interface FilterOption {
+  name?: string;
+  imcStatus?: number[];
+  gender?: 'M' | 'F';
+}
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   private users: User[] = Object.assign([], USER_MOCK);
+
+  private levels = [
+    { id: 1, imcStatus: 'Magreza' },
+    { id: 2, imcStatus: 'Saudável' },
+    { id: 3, imcStatus: 'Sobrepeso' },
+    { id: 4, imcStatus: 'Obesidade I' },
+    { id: 5, imcStatus: 'Obesidade II (severa)' },
+    { id: 6, imcStatus: 'Obesidade III (morbida)' },
+  ];
 
   constructor() { }
 
@@ -20,15 +34,18 @@ export class UserService {
     return Promise.resolve(user);
   }
 
-  filter(filterOptions: any) {
-    const { name, gender } = filterOptions;
-    const users = this.users.filter(user => this.filterByName(user, name) || this.filterByGender(user, gender));
+  filter(filterOptions: FilterOption) {
+    const { name, gender, imcStatus } = filterOptions;
+    const users = this.users.filter(user =>
+      this.filterByName(user, name) || this.filterByGender(user, gender) ||
+      this.filterByStatus(user, imcStatus)
+    );
     return Promise.resolve(users);
   }
 
   private filterByName(user: User, name: string) {
     if (!name) {
-      return true;
+      return false;
     }
     const result = user.name.indexOf(name) > -1;
     return result;
@@ -36,10 +53,36 @@ export class UserService {
 
   private filterByGender(user: User, gender: 'M' | 'F' | undefined) {
     if (!gender) {
-      return true;
+      return false;
     }
     const result = user.gender.indexOf(gender) > -1;
     return result;
+  }
+
+  private getStatus(imc: number) {
+    if (imc < 18.5) {
+      return 1;
+    } else if (imc < 24.9) {
+      return 2;
+    } else if (imc < 29.9) {
+      return 3;
+    } else if (imc < 34.9) {
+      return 4;
+    } else if (imc < 39.9) {
+      return 5;
+    } else {
+      return 6;
+    }
+  }
+
+  private filterByStatus(user: User, status: number[]) {
+    if (!status || status.length === 0) {
+      return false;
+    }
+    const { height, weight } = user;
+    const imc = (weight / (height * height));
+    const statusImc = this.getStatus(imc);
+    return status.includes(statusImc);
   }
 
 }

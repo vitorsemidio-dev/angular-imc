@@ -13,7 +13,17 @@ export class ListFormFilterComponent implements OnInit {
   filterUserForm = new FormGroup({
     name: new FormControl(''),
     gender: new FormControl(''),
+    imcStatus: new FormControl([]),
   });
+
+  levels = [
+    { id: 1, imcStatus: 'Magreza' },
+    { id: 2, imcStatus: 'Saudável' },
+    { id: 3, imcStatus: 'Sobrepeso' },
+    { id: 4, imcStatus: 'Obesidade I' },
+    { id: 5, imcStatus: 'Obesidade II (severa)' },
+    { id: 6, imcStatus: 'Obesidade III (morbida)' },
+  ];
 
   constructor(
     private userService: UserService,

@@ -10,6 +10,14 @@
       <option value="F">Feminino</option>
     </select>
   </label>
+  <label>
+    Status IMC
+    <select formControlName="imcStatus" name="imcStatusFilter" id="imcStatusFilter" multiple>
+      <option *ngFor="let level of levels" [value]="level.id">
+        {{ level.imcStatus }}
+      </option>
+    </select>
+  </label>
   <button
     [disabled]="!filterUserForm.valid"
     class="btn btn-primary"
