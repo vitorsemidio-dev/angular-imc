@@ -20,10 +20,28 @@ export class UserService {
     return Promise.resolve(user);
   }
 
-  filterUsersByName(name: string) {
-    const usersFilteredByName = this.users.filter(user => user.name.indexOf(name) > -1);
-    return Promise.resolve(usersFilteredByName);
+  filter(filterOptions: any) {
+    const { name, gender } = filterOptions;
+    const users = this.users.filter(user => this.filterByName(user, name) || this.filterByGender(user, gender));
+    return Promise.resolve(users);
   }
+
+  private filterByName(user: User, name: string) {
+    if (!name) {
+      return true;
+    }
+    const result = user.name.indexOf(name) > -1;
+    return result;
+  }
+
+  private filterByGender(user: User, gender: 'M' | 'F' | undefined) {
+    if (!gender) {
+      return true;
+    }
+    const result = user.gender.indexOf(gender) > -1;
+    return result;
+  }
+
 }
 
 export const USER_MOCK: User[] = [

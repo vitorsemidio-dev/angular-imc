@@ -3,6 +3,13 @@
     Nome:
     <input type="text" formControlName="name">
   </label>
+  <label>
+    Gênero
+    <select formControlName="gender" name="genderFilter" id="genderFilter">
+      <option value="M">Masculino</option>
+      <option value="F">Feminino</option>
+    </select>
+  </label>
   <button
     [disabled]="!filterUserForm.valid"
     class="btn btn-primary"

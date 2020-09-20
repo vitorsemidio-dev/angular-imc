@@ -12,6 +12,7 @@ export class ListFormFilterComponent implements OnInit {
 
   filterUserForm = new FormGroup({
     name: new FormControl(''),
+    gender: new FormControl(''),
   });
 
   constructor(
@@ -22,6 +23,6 @@ export class ListFormFilterComponent implements OnInit {
   }
 
   handleFilter() {
-    this.filterEmitter.emit(this.filterUserForm.value.name);
+    this.filterEmitter.emit(this.filterUserForm.value);
   }
 }

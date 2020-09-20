@@ -22,10 +22,10 @@ export class UserListComponent implements OnInit {
     this.users = users;
   }
 
-  async filterUserList(username: string) {
-    const users = await this.userService.filterUsersByName(username);
+  async filterUserList(filterOptions: any) {
+    const users = await this.userService.filter(filterOptions);
     this.users = users;
-    console.log('filter called user-list', username);
+    console.log('filter called user-list', filterOptions);
   }
 
 }
