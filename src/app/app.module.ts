@@ -1,11 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserDetailComponent } from './user-list/user-detail/user-detail.component';
 import { HeightPipe } from './user-list/user-detail/height.pipe';
 import { WeightPipe } from './user-list/user-detail/weight.pipe';
+import { CreateUserComponent } from './create-user/create-user.component';
+import { UserService } from './user-list/user.service';
 
 @NgModule({
   declarations: [
@@ -13,12 +16,17 @@ import { WeightPipe } from './user-list/user-detail/weight.pipe';
     UserListComponent,
     UserDetailComponent,
     HeightPipe,
-    WeightPipe
+    WeightPipe,
+    CreateUserComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    UserService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

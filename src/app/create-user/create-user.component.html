@@ -1,0 +1,26 @@
+<form class="user-form" [formGroup]="profileForm" (ngSubmit)="registerUser()">
+  <label>
+    Nome
+    <input placeholder="Informe o seu nome" type="text" required formControlName="name">
+  </label>
+
+  <label>
+    Altura
+    <input placeholder="Informe a sua altura" type="number" required formControlName="height">
+  </label>
+
+  <label>
+    Massa
+    <input placeholder="Informe a sua massa" type="number" required formControlName="weight">
+  </label>
+
+  <label>
+    Gênero
+    <select required formControlName="gender" name="gender" id="gender">
+      <option value="M">Masculino</option>
+      <option value="F">Feminino</option>
+    </select>
+  </label>
+  <button class="btn btn-primary" type="submit" [disabled]="!profileForm.valid">Registrar</button>
+</form>
+
