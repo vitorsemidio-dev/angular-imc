@@ -45,7 +45,7 @@ export class UserService {
 
   private filterByName(user: User, name: string) {
     if (!name) {
-      return false;
+      return true;
     }
     const result = user.name.indexOf(name) > -1;
     return result;
@@ -53,7 +53,7 @@ export class UserService {
 
   private filterByGender(user: User, gender: 'M' | 'F' | undefined) {
     if (!gender) {
-      return false;
+      return true;
     }
     const result = user.gender.indexOf(gender) > -1;
     return result;
@@ -77,7 +77,7 @@ export class UserService {
 
   private filterByStatus(user: User, status: number[]) {
     if (!status || status.length === 0) {
-      return false;
+      return true;
     }
     const { height, weight } = user;
     const imc = (weight / (height * height));

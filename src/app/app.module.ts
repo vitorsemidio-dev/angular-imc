@@ -12,6 +12,7 @@ import { UserService } from './user-list/user.service';
 import { ImcPipe } from './user-list/user-detail/imc.pipe';
 import { ImcHighlightDirective } from './user-list/user-detail/imc-highlight.directive';
 import { ListFormFilterComponent } from './user-list/list-form-filter/list-form-filter.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ListFormFilterComponent } from './user-list/list-form-filter/list-form-
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     UserService,
