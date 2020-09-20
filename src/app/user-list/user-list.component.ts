@@ -14,12 +14,18 @@ export class UserListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.carregarUsuarios();
+    this.loadUsers();
   }
 
-  async carregarUsuarios() {
+  async loadUsers() {
     const users = await this.userService.getUsers();
     this.users = users;
+  }
+
+  async filterUserList(username: string) {
+    const users = await this.userService.filterUsersByName(username);
+    this.users = users;
+    console.log('filter called user-list', username);
   }
 
 }

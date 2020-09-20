@@ -11,6 +11,7 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { UserService } from './user-list/user.service';
 import { ImcPipe } from './user-list/user-detail/imc.pipe';
 import { ImcHighlightDirective } from './user-list/user-detail/imc-highlight.directive';
+import { ListFormFilterComponent } from './user-list/list-form-filter/list-form-filter.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ImcHighlightDirective } from './user-list/user-detail/imc-highlight.dir
     WeightPipe,
     CreateUserComponent,
     ImcPipe,
-    ImcHighlightDirective
+    ImcHighlightDirective,
+    ListFormFilterComponent
   ],
   imports: [
     BrowserModule,

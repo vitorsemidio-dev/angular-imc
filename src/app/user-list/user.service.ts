@@ -19,6 +19,11 @@ export class UserService {
     this.users.push(user);
     return Promise.resolve(user);
   }
+
+  filterUsersByName(name: string) {
+    const usersFilteredByName = this.users.filter(user => user.name.indexOf(name) > -1);
+    return Promise.resolve(usersFilteredByName);
+  }
 }
 
 export const USER_MOCK: User[] = [

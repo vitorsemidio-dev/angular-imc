@@ -1,0 +1,12 @@
+<form [formGroup]="filterUserForm" (ngSubmit)="handleFilter()" >
+  <label>
+    Nome:
+    <input type="text" formControlName="name">
+  </label>
+  <button
+    [disabled]="!filterUserForm.valid"
+    class="btn btn-primary"
+    type="submit">
+    Filtrar
+  </button>
+</form>
