@@ -1,4 +1,4 @@
-<div class="card">
+<div appImcHighlight [height]="user.height" [weight]="user.weight" class="card">
   <div class="card-header">
     {{ user.name }} - {{ user.gender }}
   </div>
@@ -8,6 +8,9 @@
     </p>
     <p>
       <span>Massa: </span> {{ user.weight | weight }}
+    </p>
+    <p>
+      <span>IMC: </span> {{ user.weight / (user.height * user.height) | imc }}
     </p>
   </div>
 </div>

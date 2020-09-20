@@ -9,6 +9,8 @@ import { HeightPipe } from './user-list/user-detail/height.pipe';
 import { WeightPipe } from './user-list/user-detail/weight.pipe';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { UserService } from './user-list/user.service';
+import { ImcPipe } from './user-list/user-detail/imc.pipe';
+import { ImcHighlightDirective } from './user-list/user-detail/imc-highlight.directive';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { UserService } from './user-list/user.service';
     UserDetailComponent,
     HeightPipe,
     WeightPipe,
-    CreateUserComponent
+    CreateUserComponent,
+    ImcPipe,
+    ImcHighlightDirective
   ],
   imports: [
     BrowserModule,
