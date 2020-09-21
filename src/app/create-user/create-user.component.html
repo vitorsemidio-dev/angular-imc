@@ -1,32 +1,37 @@
 <form class="user-form" [formGroup]="profileForm" (ngSubmit)="registerUser()">
-  <mat-form-field appearance="fill">
-    <mat-label>Nome</mat-label>
-    <input matInput required formControlName="name" />
-  </mat-form-field>
+  <fieldset>
+    <legend>
+      Cadastro
+    </legend>
+    <mat-form-field appearance="fill">
+      <mat-label>Nome</mat-label>
+      <input matInput required formControlName="name" />
+    </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Altura</mat-label>
-    <input matInput required formControlName="height" type="number" />
-    <span matSuffix>m</span>
-  </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Altura</mat-label>
+      <input matInput required formControlName="height" type="number" />
+      <span matSuffix>m</span>
+    </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Peso</mat-label>
-    <input matInput required formControlName="weight" type="number" />
-    <span matSuffix>kg</span>
-  </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Peso</mat-label>
+      <input matInput required formControlName="weight" type="number" />
+      <span matSuffix>kg</span>
+    </mat-form-field>
 
-  <mat-form-field color="accent" appearance="fill">
-    <mat-label>Gênero</mat-label>
-    <mat-select required formControlName="gender">
-      <mat-option [value]="'M'">
-        Masculino
-      </mat-option>
-      <mat-option [value]="'F'">
-        Feminino
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+    <mat-form-field color="accent" appearance="fill">
+      <mat-label>Gênero</mat-label>
+      <mat-select required formControlName="gender">
+        <mat-option [value]="'M'">
+          Masculino
+        </mat-option>
+        <mat-option [value]="'F'">
+          Feminino
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </fieldset>
 
   <button class="btn btn-primary" type="submit" [disabled]="!profileForm.valid">Registrar</button>
 </form>
