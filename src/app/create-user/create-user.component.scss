@@ -1,10 +1,13 @@
 :host {
   width: 24rem;
-  border: 1px solid blue;
-  padding: 8px;
+  // border: 1px solid blue;
+  // padding: 8px;
 }
 
 .user-form {
+  padding: 8px;
   display: flex;
   flex-direction: column;
+  background-color: #003333;
+  color: #669999;
 }
