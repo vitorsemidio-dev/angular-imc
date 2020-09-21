@@ -1,23 +1,27 @@
 <form [formGroup]="filterUserForm" (ngSubmit)="handleFilter()" >
-  <label>
-    Nome:
-    <input type="text" formControlName="name">
-  </label>
-  <label>
-    Gênero
-    <select formControlName="gender" name="genderFilter" id="genderFilter">
-      <option value="M">Masculino</option>
-      <option value="F">Feminino</option>
-    </select>
-  </label>
-  <label>
-    Status IMC
-    <select formControlName="imcStatus" name="imcStatusFilter" id="imcStatusFilter" multiple>
-      <option *ngFor="let level of levels" [value]="level.id">
+  <mat-form-field color="accent" appearance="fill">
+    <mat-label>Nome</mat-label>
+    <input matInput required formControlName="name" placeholder="Fulano ...">
+  </mat-form-field>
+  <mat-form-field color="accent" appearance="fill">
+    <mat-label>Gênero</mat-label>
+    <mat-select required formControlName="gender"  multiple>
+      <mat-option [value]="'M'">
+        Masculino
+      </mat-option>
+      <mat-option [value]="'F'">
+        Feminino
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field color="accent" appearance="fill">
+    <mat-label>Status IMC</mat-label>
+    <mat-select required formControlName="imcStatus" multiple>
+      <mat-option  *ngFor="let level of levels" [value]="level.id">
         {{ level.imcStatus }}
-      </option>
-    </select>
-  </label>
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
   <button
     [disabled]="!filterUserForm.valid"
     class="btn btn-primary"

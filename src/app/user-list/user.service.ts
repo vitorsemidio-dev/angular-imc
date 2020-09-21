@@ -5,7 +5,7 @@ import { User } from './user';
 interface FilterOption {
   name?: string;
   imcStatus?: number[];
-  gender?: 'M' | 'F';
+  gender?: Array<'M' | 'F'>;
 }
 @Injectable({
   providedIn: 'root'
@@ -37,7 +37,7 @@ export class UserService {
   filter(filterOptions: FilterOption) {
     const { name, gender, imcStatus } = filterOptions;
     const users = this.users.filter(user =>
-      this.filterByName(user, name) || this.filterByGender(user, gender) ||
+      this.filterByName(user, name) && this.filterByGender(user, gender) &&
       this.filterByStatus(user, imcStatus)
     );
     return Promise.resolve(users);
@@ -51,11 +51,11 @@ export class UserService {
     return result;
   }
 
-  private filterByGender(user: User, gender: 'M' | 'F' | undefined) {
+  private filterByGender(user: User, gender: Array<'M' | 'F'> | undefined) {
     if (!gender) {
       return true;
     }
-    const result = user.gender.indexOf(gender) > -1;
+    const result = gender.indexOf(user.gender) > -1;
     return result;
   }
 
